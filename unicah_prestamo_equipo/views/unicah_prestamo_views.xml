@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_unicah_prestamo_list" model="ir.ui.view">
+        <field name="name">unicah.prestamo.list</field>
+        <field name="model">unicah.prestamo</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="name"/>
+                <field name="solicitante_id"/>
+                <field name="tipo_solicitante"/>
+                <field name="equipo"/>
+                <field name="aula_destino"/>
+                <field name="fecha_prestamo"/>
+                <field name="fecha_devolucion"/>
+                <field name="dias_prestamo"/>
+                <field name="estado" widget="badge"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="view_unicah_prestamo_form" model="ir.ui.view">
+        <field name="name">unicah.prestamo.form</field>
+        <field name="model">unicah.prestamo</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="action_entregar" string="Entregar equipo" type="object" class="btn-primary" invisible="estado != 'borrador'"/>
+                    <button name="action_devolver" string="Marcar devuelto" type="object" class="btn-success" invisible="estado != 'prestado'"/>
+                    <field name="estado" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="solicitante_id"/>
+                            <field name="tipo_solicitante"/>
+                            <field name="equipo"/>
+                        </group>
+                        <group>
+                            <field name="aula_destino"/>
+                            <field name="fecha_prestamo"/>
+                            <field name="fecha_devolucion"/>
+                            <field name="dias_prestamo"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_unicah_prestamo" model="ir.actions.act_window">
+        <field name="name">Préstamo de Equipo</field>
+        <field name="res_model">unicah.prestamo</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <menuitem id="menu_unicah_prestamo_root" name="Préstamos UNICAH" sequence="60"/>
+    <menuitem id="menu_unicah_prestamo_list" name="Solicitudes de equipo" parent="menu_unicah_prestamo_root" action="action_unicah_prestamo" sequence="10"/>
+</odoo>
