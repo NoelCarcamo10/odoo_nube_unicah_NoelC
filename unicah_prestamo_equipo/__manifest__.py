@@ -6,7 +6,7 @@
     "author": "Noel Carcamo",
     "depends": ["base", "tienda_unicah"],
     "data": [
-        "security/ir.access.csv",
+        "security/ir.model.access.csv",
         "views/unicah_prestamo_views.xml",
         "views/res_partner_views.xml",
     ],

@@ -6,7 +6,7 @@
     "author": "Noel Cárcamo",
     "depends": ["sale_management"],
     "data": [
-        "security/ir.access.csv",
+        "security/ir.model.access.csv",
         "data/tienda_convenio_data.xml",
         "views/res_partner_views.xml",
         "views/tienda_convenio_views.xml",
